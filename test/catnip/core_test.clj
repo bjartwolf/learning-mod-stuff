@@ -3,14 +3,16 @@
         catnip.core
         clojure.math.numeric-tower))
 
-(deftest a-test
+
+(deftest a-simple-test
   (testing "Testing congruency"
     (is ((congruent 5)  -8 7))
     (not ((congruent 5)  -7 7 ))
     (is ((congruent 12)  38 14))
     (not ((congruent 12)  38 13))
     (is ((congruent 5)  2 -3)) 
-    (is ((congruent 5) -3 -8))))
+    (is ((congruent 5) -3 -8))
+))
 
 (deftest fermat-test
   (testing "Testing fermats little theorem"
@@ -24,7 +26,7 @@
     (is ((congruent p)  (expt 25 (- p 1)) 0))
 )))
 
-(deftest fermat2-test
+(deftest fermat-two-test
   (testing "Testing fermats little theorem for another prime"
     (let [p 7]
     (is ((congruent p)  (expt 2 (- p 1)) 1)) 
@@ -38,8 +40,14 @@
     (not ((congruent p)  (expt 21 (- p 1)) 1))
 )))
 
-(deftest fermat3-test
+
+
+(deftest fermat-three-test
   (testing "Testing fermats theorem"
-    (let [p 13]
-    (is ((congruent p)  (expt 2 p) 2))
+    (let [p 13
+          a 4
+          b 10]
+    (is ((congruent p)  (expt a p) a))
+    (is ((congruent p)  (expt b p) b))
+    (is ((congruent p)  (expt 21 p) 21))
 )))
