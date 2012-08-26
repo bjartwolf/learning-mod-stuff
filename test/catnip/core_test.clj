@@ -37,16 +37,17 @@
 
 (deftest fermattwo-test
   (testing "Testing fermats little theorem for another prime"
-    (let [p 7]
-    (is ((congruent p)  (expt 2 (- p 1)) 1)) 
-    (is ((congruent p)  (expt 3 (- p 1)) 1)) 
-    (is ((congruent p)  (expt 4 (- p 1)) 1))
-    (is ((congruent p)  (expt 5 (- p 1)) 1))
-    (is ((congruent p)  (expt 6 (- p 1)) 1))
-    (is (not ((congruent p)  (expt 7 (- p 1)) 1)))
-    (is ((congruent p)  (expt 8 (- p 1)) 1))
-    (is (not ((congruent p)  (expt 14 (- p 1)) 1)))
-    (is (not ((congruent p)  (expt 21 (- p 1)) 1)))
+    (let [p 7
+          congruent-7 (congruent p)]
+    (is (congruent-7  (expt 2 (- p 1)) 1)) 
+    (is (congruent-7  (expt 3 (- p 1)) 1)) 
+    (is (congruent-7  (expt 4 (- p 1)) 1))
+    (is (congruent-7  (expt 5 (- p 1)) 1))
+    (is (congruent-7  (expt 6 (- p 1)) 1))
+    (is (not (congruent-7  (expt 7 (- p 1)) 1)))
+    (is (congruent-7  (expt 8 (- p 1)) 1))
+    (is (not (congruent-7 (expt 14 (- p 1)) 1)))
+    (is (not (congruent-7 (expt 21 (- p 1)) 1)))
 )))
 
 
