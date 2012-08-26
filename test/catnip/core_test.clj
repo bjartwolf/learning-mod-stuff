@@ -37,3 +37,9 @@
     (not ((congruent p)  (expt 14 (- p 1)) 1))
     (not ((congruent p)  (expt 21 (- p 1)) 1))
 )))
+
+(deftest fermat3-test
+  (testing "Testing fermats theorem"
+    (let [p 13]
+    (is ((congruent p)  (expt 2 p) 2))
+)))
