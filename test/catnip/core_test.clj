@@ -19,6 +19,9 @@
     (is ((congruent p)  (expt 3 (- p 1)) 1)) 
     (is ((congruent p)  (expt 4 (- p 1)) 1))
     (not ((congruent p)  (expt 5 (- p 1)) 1))
+    (not ((congruent p)  (expt 10 (- p 1)) 1))
+    (is ((congruent p)  (expt 15 (- p 1)) 0))
+    (is ((congruent p)  (expt 25 (- p 1)) 0))
 )))
 
 (deftest fermat2-test
