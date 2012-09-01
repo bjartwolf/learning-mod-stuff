@@ -5,22 +5,44 @@
 
 (deftest congruency-test
   (testing "Explaining basic congruency"
-    (is ((congruent 5) 5 10))
-    (is (not ((congruent 5) 5 11)))
-    (is ((congruent 12)  38 14))
-    (is (not ((congruent 12) 38 15)))
+    (is ((congruent 5) 5 10)) 
+      ; remainder of (10-5)/5 is 0
+      ; 5 + 5*1 = 10
+      
+    (is (not ((congruent 5) 5 11))) 
+      ; remainder of (11-5)/5 is 1
+      ; 5 + 5*n != 11
+                        
+    (is ((congruent 12)  38 14)) 
+      ; remainder of (38-14)/12 is 0
+      ; 14+12*2 = 38
+      
+    (is (not ((congruent 12) 38 15))) 
+      ; remainder of (38-15)/12 is 11
+      ; 14+12*n != 38
 ))
 
 (deftest congruency-of-neg-numbers-test
   (testing "Congruency of negative numbers"
-    (is ((congruent 5)  -8 7))
+    (is ((congruent 5)  -8 7)) ;
+          ; remainder of (-8 -7)/5 is 0
+          ; -8 + 3*5 = 7
+          
     (is (not ((congruent 5)  -7 7 )))
+          ; remainder of (-7-7)/5 is 4
+          ; -7 + n*5 != 7
+          
     (is ((congruent 5)  2 -3)) 
+          ; remainder of (2 - (-3))/5 is 0
+          ; 2 + -1*5 = -3
+          
     (is ((congruent 5) -3 -8))
+          ; remainder of (-3 - (-8))/5 is 0
+          ; -3 + (-1)*5 = -8
 ))
 
 (deftest fermat-little-theorem-test-1
-  (testing "Testing fermats little theorem"
+  (testing "Showing some props of fermats little theorem"
     (let [p 5]
     (is ((congruent p)  (expt 2 (- p 1)) 1)) 
     (is ((congruent p)  (expt 3 (- p 1)) 1)) 
@@ -33,7 +55,7 @@
 
 
 (deftest fermat-little-theorem-test-2
-  (testing "Testing fermats theorem"
+  (testing "Same properties with variables"
     (let [p 13
           a 4
           b 10]
@@ -43,7 +65,7 @@
 )))
 
 (deftest fermat-little-theorem-test-3
-  (testing "Testing fermats little theorem for another prime"
+  (testing "Same properties, new prime"
     (let [p 7
           congruent-7 (congruent p)]
     (is (congruent-7  (expt 2 (- p 1)) 1)) 
