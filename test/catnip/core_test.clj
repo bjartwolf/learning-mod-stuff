@@ -78,3 +78,31 @@
     (is (not (congruent-7 (expt 14 (- p 1)) 1)))
     (is (not (congruent-7 (expt 21 (- p 1)) 1)))
 )))
+
+
+(deftest fermat-little-theorem-test-nonprime
+  (testing "Noneprime"
+    (let [p 8
+          congruent-8 (congruent p)]
+    (is (not (congruent-8  (expt 2 (- p 1)) 1)))
+    (is (not (congruent-8  (expt 3 (- p 1)) 1))) 
+    (is (not (congruent-8  (expt 4 (- p 1)) 1)))
+    (is (not (congruent-8  (expt 5 (- p 1)) 1)))
+    (is (not (congruent-8  (expt 6 (- p 1)) 1)))
+    (is (not (congruent-8  (expt 7 (- p 1)) 1)))
+)))
+
+
+(deftest finding-a-fermat-liar
+  (testing "Liar! Liar! 221 is not a prime, but 38 lies!"
+    (let [p 221
+          congruent-221 (congruent p)]
+    (is (congruent-221  (expt 38 (- p 1)) 1)) 
+      ; 31 is a bloody liar!
+    (is (congruent-221  (expt 21 (- p 1)) 1)) 
+      ; 21 is a bloody liar too! They all lie!
+    (is (not (congruent-221  (expt 26 (- p 1)) 1))) 
+      ; but other gives it away
+    (is (not (congruent-221  (expt 22 (- p 1)) 1))) 
+      ; but other gives it away
+)))
